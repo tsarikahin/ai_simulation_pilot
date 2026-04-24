@@ -1,0 +1,8 @@
+.venv
+.vscode
+__pycache__/
+*.pyc
+*.pyo
+# Environment variable files
+.env
+some_guidelines.md

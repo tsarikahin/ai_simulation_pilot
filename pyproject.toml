@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simcopilot"
+version = "0.1.0"
+description = "AI-assisted tool for explaining Abaqus .inp files (MVP)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "AI Simulation Pilot", email = "noreply@example.com" }
+]
+dependencies = [
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.29.0",
+    "openai>=1.75.0",
+    "python-multipart>=0.0.9",
+    "python-dotenv>=1.0.1",
+    "litellm>=1.83.12",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.27.0",
+]
