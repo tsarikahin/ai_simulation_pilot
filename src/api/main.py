@@ -33,13 +33,8 @@ def create_app() -> FastAPI:
             except UnicodeDecodeError:
                 raise HTTPException(status_code=400, detail="File must be UTF-8 encoded text.")
         else:
-            # Use default file from samples/simple_beam.inp
-            try:
-                with open("samples/simple_beam.inp", "r", encoding="utf-8") as f:
-                    inp_text = f.read()
-            except Exception as e:
-                raise HTTPException(status_code=500, detail=f"Failed to load default .inp file: {e}")
-
+            raise HTTPException(status_code=400, detail="No file uploaded.")
+        
         simulation = parse_sections(inp_text)
         issues = validate_simulation(simulation)
         llm_client = LLMClient(settings)  # Uses settings internally
