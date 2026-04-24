@@ -1,0 +1,97 @@
+*Heading
+** Job name: Hoist Model name: Model-1
+*Preprint, echo=NO, model=NO, history=NO
+
+** ----------------------------
+** PARTS
+** ----------------------------
+*Part, name=Hoist
+
+*Node
+1, -0.491506338,  0.792820334
+2,  0.508493662,  0.792820334
+3,  1.00849366,  -0.0732050836
+4,  0.00849364884, -0.0732050836
+5, -0.991506338, -0.0732050836
+
+*Element, type=T2D2
+1, 1, 2
+2, 3, 2
+3, 4, 3
+4, 2, 4
+5, 4, 1
+6, 1, 5
+7, 5, 4
+
+*Nset, nset=Set-1, generate
+1, 5, 1
+
+*Elset, elset=Set-1, generate
+1, 7, 1
+
+** Section: Circular_section
+*Solid Section, elset=Set-1, material=Steel
+1.96344e-05
+
+*End Part
+
+** ----------------------------
+** ASSEMBLY
+** ----------------------------
+*Assembly, name=Assembly
+
+*Instance, name=Hoist-1, part=Hoist
+*End Instance
+
+*Nset, nset=Set-1, instance=Hoist-1
+5
+
+*Nset, nset=Set-2, instance=Hoist-1
+3
+
+*Nset, nset=Set-3, instance=Hoist-1
+4
+
+*End Assembly
+
+** ----------------------------
+** MATERIALS
+** ----------------------------
+*Material, name=Steel
+*Elastic
+2e+11, 0.3
+
+** ----------------------------
+** BOUNDARY CONDITIONS
+** ----------------------------
+
+** Name: Pin-joint
+*Boundary
+Set-1, 1, 1
+Set-1, 2, 2
+
+** Name: Sliding-joint
+*Boundary
+Set-2, 2, 2
+
+** ----------------------------
+** STEP
+** ----------------------------
+*Step, name=Vertical_force, perturbation
+*Static
+
+** ----------------------------
+** LOADS
+** ----------------------------
+
+** Name: Load-1   Type: Concentrated force
+*Cload
+Set-3, 2, -10000.
+
+** ----------------------------
+** OUTPUT REQUESTS
+** ----------------------------
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+
+*End Step

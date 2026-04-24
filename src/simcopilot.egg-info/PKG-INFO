@@ -1,0 +1,27 @@
+Metadata-Version: 2.4
+Name: simcopilot
+Version: 0.1.0
+Summary: AI-assisted tool for explaining Abaqus .inp files (MVP)
+Author-email: AI Simulation Pilot <noreply@example.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.111.0
+Requires-Dist: uvicorn[standard]>=0.29.0
+Requires-Dist: openai>=1.75.0
+Requires-Dist: python-multipart>=0.0.9
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: litellm>=1.83.12
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: pydantic-settings>=2.0.0
+Requires-Dist: pyvista>=0.44.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+
+# simcopilot
+
+AI-assisted tool for explaining Abaqus `.inp` files (MVP).
+
+See `some_guidelines.md` for design notes and the project structure.
+
+Core idea: parse `.inp` → structured JSON → LLM explanation (explain mode only in v1).
